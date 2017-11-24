@@ -2,9 +2,9 @@ require 'formula'
 
 class Ks < Formula
   desc "The ksonnet command line utility. Manage and deploy Kubernetes applications."
-  homepage 'https://github.com/ksonnet/ksonnet'
+  homepage 'http://ksonnet.io'
 
-  url 'https://github.com/ksonnet/ksonnet.git', :branch => 'd38f65eee718475aab399365722097b65b2db737'
+  url 'https://github.com/ksonnet/ksonnet.git', :revision => 'd38f65eee718475aab399365722097b65b2db737'
   version 'v0.1-alpha.1'
 
   head "https://github.com/ksonnet/ksonnet.git"
