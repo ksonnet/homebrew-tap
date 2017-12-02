@@ -12,5 +12,5 @@ Get the latest development version with the `--HEAD` flag.
 ## Upgrading
 
 ```
-brew update && brew upgrade
+brew update && brew upgrade ksonnet/tap/ks
 ```
