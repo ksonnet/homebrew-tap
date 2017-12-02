@@ -17,7 +17,7 @@ class Ks < Formula
   desc "The ksonnet command line utility. Manage and deploy Kubernetes applications."
   homepage 'http://ksonnet.io'
 
-  url 'https://github.com/ksonnet/ksonnet.git', :tag => 'v0.7.0', :revision => 'd542989c3a4b7d2d028d19a91b4f31c769d214d2'
+  url 'https://github.com/ksonnet/ksonnet.git', :tag => 'v0.7.0'
 
   head "https://github.com/ksonnet/ksonnet.git"
 
