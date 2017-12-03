@@ -11,30 +11,33 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
-require 'formula'
-
 class Ks < Formula
-  desc "The ksonnet command line utility. Manage and deploy Kubernetes applications."
-  homepage 'http://ksonnet.io'
+  VERSION = "v0.7.0".freeze
 
-  url 'https://github.com/ksonnet/ksonnet.git', :tag => 'v0.7.0'
+  desc "The ksonnet command-line utility. Manage and deploy Kubernetes applications"
+  homepage "https://ksonnet.io"
+
+  url "https://github.com/ksonnet/ksonnet.git", :tag => VERSION
 
   head "https://github.com/ksonnet/ksonnet.git"
 
-  depends_on 'go' => :build
+  depends_on "go" => :build
 
   def install
     ENV["GOPATH"] = buildpath
 
-    arch = MacOS.prefer_64_bit? ? "amd64" : "x86"
     dir = buildpath/"src/github.com/ksonnet/ksonnet"
     dir.install buildpath.children - [buildpath/".brew_home"]
 
     system "go", "env" # Debug env
 
     cd dir do
-      system "make", "install"
+      system "make", "install", "-e", "VERSION=#{VERSION}"
     end
     bin.install "bin/ks"
+  end
+
+  test do
+    system bin/"ks", "version"
   end
 end
