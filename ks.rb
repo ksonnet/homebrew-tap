@@ -12,7 +12,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 class Ks < Formula
-  VERSION = "v0.7.0".freeze
+  VERSION = "v0.8.0".freeze
 
   desc "The ksonnet command-line utility. Manage and deploy Kubernetes applications"
   homepage "https://ksonnet.io"
