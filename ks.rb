@@ -1,4 +1,5 @@
-# Copyright 2017 The Ksonnet Authors
+
+# Copyright 2018 The Ksonnet Authors
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -12,32 +13,17 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 class Ks < Formula
-  VERSION = "v0.8.0".freeze
-
-  desc "The ksonnet command-line utility. Manage and deploy Kubernetes applications"
+  desc "The ksonnet command line utility. Manage and deploy Kubernetes applications."
   homepage "https://ksonnet.io"
-
-  url "https://github.com/ksonnet/ksonnet.git", :tag => VERSION
-
-  head "https://github.com/ksonnet/ksonnet.git"
-
-  depends_on "go" => :build
+  url "https://github.com/ksonnet/ksonnet/releases/download/v0.9.0/ks_0.9.0_darwin_amd64.tar.gz"
+  version "0.9.0"
+  sha256 "9cf42d0c55008f40b0ce469b9bc6cfa27b1e6c36094f08ef7e649d3baf32dc19"
 
   def install
-    ENV["GOPATH"] = buildpath
-
-    dir = buildpath/"src/github.com/ksonnet/ksonnet"
-    dir.install buildpath.children - [buildpath/".brew_home"]
-
-    system "go", "env" # Debug env
-
-    cd dir do
-      system "make", "install", "-e", "VERSION=#{VERSION}"
-    end
-    bin.install "bin/ks"
+    bin.install "ks"
   end
 
   test do
-    system bin/"ks", "version"
+    
   end
 end
